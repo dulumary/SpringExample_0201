@@ -1,6 +1,7 @@
 package com.marondal.spring.ex.jstl;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -51,6 +52,16 @@ public class JSTLController {
 		
 		
 		return "jstl/ex02";
+	}
+	
+	
+	@GetMapping("/ex03")
+	public String ex03(Model model) {
+		
+		Date now = new Date();
+		
+		model.addAttribute("now", now);
+		return "jstl/ex03";
 	}
 
 }
