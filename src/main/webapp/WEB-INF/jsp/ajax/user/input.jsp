@@ -12,7 +12,7 @@
 	
 	<label>이름 : </label> <input type="text" id="nameInput"> <br>
 	<label>생년월일 : </label> <input type="text" id="birthdayInput"> <br>
-	<label>이메일 : </label> <input type="text" id="emailInput"> <br>
+	<label>이메일 : </label> <input type="text" id="emailInput"> <button type="button">중복확인</button> <br>
 	<button type="button" id="addBtn">추가</button>
 	
 
