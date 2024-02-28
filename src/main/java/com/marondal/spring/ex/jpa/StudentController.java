@@ -1,5 +1,8 @@
 package com.marondal.spring.ex.jpa;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -7,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.marondal.spring.ex.jpa.domain.Student;
+import com.marondal.spring.ex.jpa.repository.StudentRepository;
 import com.marondal.spring.ex.jpa.service.StudentService;
 
 @RequestMapping("/jpa/student")
@@ -15,6 +19,12 @@ public class StudentController {
 	
 	@Autowired
 	private StudentService studentService;
+	
+	// Controller에서는 Repository 객체 사용 금지
+	// 편의를 위해 잠시 사용
+	@Autowired
+	private StudentRepository studentRepository;
+	
 	
 	@GetMapping("/create")
 	@ResponseBody
@@ -42,7 +52,32 @@ public class StudentController {
 		return "삭제 성공";
 	}
 	
-	
+	@GetMapping("/select")
+	@ResponseBody
+	public List<Student> selectStudent() {
+		
+		// 모든행 조회 
+//		List<Student> studentList = studentRepository.findAll();
+		
+//		List<Student> studentList = studentRepository.findAllByOrderByIdDesc();
+		
+//		List<Student> studentList = studentRepository.findTop3ByOrderByIdDesc();
+		
+//		List<Student> studentList = studentRepository.findByName("김인규");
+		
+//		List<String> nameList = new ArrayList<>();
+//		nameList.add("유재석");
+//		nameList.add("김인규");
+//		
+//		List<Student> studentList = studentRepository.findByNameIn(nameList);
+//		
+//		List<Student> studentList = studentRepository.findByEmailContaining("naver");
+//		List<Student> studentList = studentRepository.findByIdBetweenOrderByIdDesc(1, 7);
+		
+		List<Student> studentList = studentRepository.findByDreamJobQuery("모델");
+		return studentList;
+		
+	}
 	
 	
 	@GetMapping("/jpa/lombok/test")
